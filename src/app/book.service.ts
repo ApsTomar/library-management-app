@@ -8,7 +8,7 @@ import { catchError, map, tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class BookService {
-  private baseUrl = 'http://localhost:8000';
+  private baseUrl = 'http://localhost:8001';
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -19,18 +19,16 @@ export class BookService {
 
   getBooks(): Observable<Book[]> {
     return this.http.get<Book[]>(`${this.baseUrl}/get/books`)
-      .pipe(catchError(this.handleError<Book[]>('getBooks', [])))
   }
 
   getBook(id: number): Observable<Book> {
     return this.http.get<Book>(`${this.baseUrl}/get/book-by-id/${id}`)
-      .pipe(catchError(this.handleError<Book>(`getBook id=${id}`)))
   }
 
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-      console.error(error); // log to console instead
-      return of(result as T);
-    };
-  }
+  // private handleError<T>(operation = 'operation', result?: T) {
+  //   return (error: any): Observable<T> => {
+  //     console.error(error);
+  //     return of(result as T);
+  //   };
+  // }
 }

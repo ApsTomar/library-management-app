@@ -5,3 +5,12 @@ export class Book {
     available: boolean
     availableDate: Date
 }
+
+export class User {
+    id: string
+    name: string
+    email: string
+    accountRole: string
+    password: string
+    token: string
+}
