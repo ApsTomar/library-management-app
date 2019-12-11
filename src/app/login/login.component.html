@@ -1,36 +1,56 @@
-<h2>Login</h2>
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <div class="form-group">
-        <label for="email">Email</label>
-        <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid':
-         submitted && f.email.errors }" placeholder="email"/>
-        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-            <div *ngIf="f.email.errors.required">Email is required</div>
+<div class=flex-container>
+    <div class="heading">Login</div>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="drop-down" [ngClass]="{ 'is-invalid':submitted && f.accountTypes.errors }">
+            <label for="accountTypes"></label>
+            <mat-select formControlName="accountTypes" [ngClass]="{ 'is-invalid':submitted && f.accountTypes.errors }">
+                <mat-option value="" disabled>select account type</mat-option>
+                <mat-option *ngFor="let account of accountTypes" [value]="account">
+                    {{account}}
+                </mat-option>
+            </mat-select>
+            <div *ngIf="submitted && f.accountTypes.errors" class="invalid-feedback">
+                <div *ngIf="f.accountTypes.errors.required">account type is required </div>
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" formControlName="password" [ngClass]="{ 'is-invalid':
-         submitted && f.password.errors }" placeholder="password"/>
-        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-            <div *ngIf="f.password.errors.required">Password is required</div>
+        <div class="form-group">
+            <label for="email"></label>
+            <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid':
+                 submitted && f.email.errors }" placeholder="email" />
+            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                <div *ngIf="f.email.errors.required">email is required </div>
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        <button [disabled]="loading" class="btn btn-primary">Login</button>
-        <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/
-        C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklr
-        E2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QM
-        u7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYv
-        BoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZf
-        hYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwm
-        dsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEu
-        QradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc
-        3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCp
-        yrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+        <div class="form-group">
+            <label for="password"></label>
+            <input type="password" formControlName="password" [ngClass]="{ 'is-invalid':
+                 submitted && f.password.errors }" placeholder="password" />
+            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                <div *ngIf="f.password.errors.required">password is required</div>
+            </div>
+        </div>
 
-        <a routerLink="['/signup']" class="btn btn-link">Sign Up</a>
-    </div>
-</form>
+        <div class="form-group">
+            <button [disabled]="loading" class="btn btn-primary">Login</button>
+            <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/
+                C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklr
+                E2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QM
+                u7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYv
+                BoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZf
+                hYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwm
+                dsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEu
+                QradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc
+                3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCp
+                yrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+        </div>
+        <div class="signup-link">
+            <a [routerLink]="['/signup']" class="btn btn-link">
+                Join Library
+            </a>
+        </div>
+    </form>
+
+</div>

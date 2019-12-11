@@ -15,6 +15,9 @@ export class LoginComponent implements OnInit {
   loading = false;
   submitted = false;
   returnUrl: string;
+  accountTypes = ['admin', 'user'];
+  errorElement: string;
+
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
@@ -30,7 +33,8 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
       email: ['', Validators.required],
-      password: ['', Validators.required]
+      password: ['', Validators.required],
+      accountTypes: ['', Validators.required]
     });
 
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
@@ -47,11 +51,12 @@ export class LoginComponent implements OnInit {
     }
 
     this.loading = true;
-    this.authenticationService.login(this.f.email.value, this.f.password.value)
+    this.authenticationService.login(this.f.email.value, this.f.password.value, this.f.accountTypes.value)
       .pipe(first())
       .subscribe(
         data => {
           this.router.navigate([this.returnUrl]);
+          this.loading = false;
         },
         error => {
           this.alertService.error(error);

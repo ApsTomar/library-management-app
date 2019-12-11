@@ -6,13 +6,15 @@ import {
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { AuthenticationService } from '../_services/authentication.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 
-export class InterceptorService implements HttpInterceptor {
-  constructor(private authenticationService: AuthenticationService) { }
+export class ErrorInterceptor implements HttpInterceptor {
+  constructor(
+    private authenticationService: AuthenticationService,
+    private snackBar: MatSnackBar,
+    ) { }
 
   handleError(error: HttpErrorResponse) {
     console.log(error.message);
@@ -21,6 +23,10 @@ export class InterceptorService implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(req).pipe(catchError(err => {
+      this.snackBar.open(err.error,'dismiss',{
+        duration: 2000,
+        panelClass:'warn'
+      })
       if (err.status == 401) {
         this.authenticationService.logout();
         location.reload(true);
