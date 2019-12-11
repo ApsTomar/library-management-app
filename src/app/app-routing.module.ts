@@ -3,13 +3,13 @@ import { Routes, RouterModule } from '@angular/router';
 import { BooksComponent } from './books/books.component';
 import { BookDetailComponent } from './book-detail/book-detail.component';
 import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
 
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
-  // { path: 'signup', component: SignupComponent },
-
+  { path: 'signup', component: SignupComponent },
   { path: 'books', component: BooksComponent },
   { path: 'detail/:id', component: BookDetailComponent },
 ];
