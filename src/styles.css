@@ -1,4 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body { 
+    height: 100%; 
+}
+body { 
+    margin: 0; 
+    font-family: fantasy; 
+    background-size: cover;
+    background: linear-gradient(rgba(255, 255, 255, 0.650), rgba(255, 255, 255, 0.650)),
+     url("assets/library_image.jpg") no-repeat center center;
+     background-size: 100% 100%;
+}
+
+.mat-select-panel-wrap .mat-select-panel{
+    border-radius: 25px !important;
+    background-color: bisque;
+}

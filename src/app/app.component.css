@@ -1,5 +1,18 @@
-h1 {
-    color: rgb(219, 91, 31);
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 250%;
+.heading {
+    color: rgb(110, 68, 6);
+    font-family: '';
+    font-size: 350%;
+    height: 8%;
+    font-weight: normal;
+    padding-left: 20px;
+}
+.header {
+    display: flex;
+    align-items: center;
+    padding-top: 12px;
+}
+.logo_img{
+    padding-left: 10px;
+    height: 90px;
+    width: 100px;
 }
