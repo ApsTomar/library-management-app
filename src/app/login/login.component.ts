@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
       accountTypes: ['', Validators.required]
     });
 
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    this.returnUrl = '/book-search';
   }
 
   get f() {

@@ -15,6 +15,7 @@ import { JWTInterceptor } from './_helpers/jwt.interceptor';
 import { ErrorInterceptor } from './_helpers/error.interceptor';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { BookSearchComponent } from './book-search/book-search.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     BookDetailComponent,
     LoginComponent,
     AlertsComponent,
-    SignupComponent
+    SignupComponent,
+    BookSearchComponent
   ],
   imports: [
     MatSelectModule,
