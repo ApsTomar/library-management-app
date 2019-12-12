@@ -25,18 +25,22 @@
     justify-content: center;
     align-items: center;
  } 
- .ng-star-inserted {
+ .invalid-feedback{
      color: darkred;
  }
 input{
     background: rgb(245, 202, 147);
     width: 320px;
-    padding: 20px;
+    padding: 25px;
+    padding-bottom: 20px;
     border: 1px solid  rgb(214, 177, 134);
     border-radius: 25px;
     margin: 0.5em;
     font-size: medium;
     padding:auto;
+    cursor: text;
+    position:relative;
+    z-index: 1;
 }
 button{
     display: flex;
@@ -50,4 +54,13 @@ button{
     cursor: pointer;
     margin-top: 10px;
     font-size: large;
+}
+a{
+    display: flex;
+    justify-content: center;
+    color: rgb(75, 45, 6);
+    font-size: 1.1em;
+    font-weight: 900;
+    margin-top: 10px;
+    text-decoration: overline;    
 }

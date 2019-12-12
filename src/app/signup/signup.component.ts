@@ -29,7 +29,6 @@ export class SignupComponent implements OnInit {
       name: ['', Validators.required],
       email: ['', Validators.required],
       password: ['', Validators.required],
-      accountRole: ['', Validators.required],
     });
 
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
@@ -40,13 +39,15 @@ export class SignupComponent implements OnInit {
   }
 
   onSubmit() {
-    this.loading = true;
     this.submitted = true
     if (this.signupForm.invalid) {
+      console.log(this.submitted);
+
       this.loading = false;
       return;
     }
-    console.log(this.f.name.value);
+    this.loading = true;
+
     this.authenticationService.signup(this.f.name.value, this.f.email.value, this.f.password.value)
       .pipe(first())
       .subscribe(

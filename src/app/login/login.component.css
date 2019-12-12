@@ -25,7 +25,7 @@
     justify-content: center;
     align-items: center;
  } 
- .ng-star-inserted {
+ .invalid-feedback{
      color: darkred;
      display: flex;
      justify-content: center;
@@ -33,17 +33,18 @@
 input{
     background: rgb(245, 202, 147);
     width: 320px;
-    padding: 20px;
+    padding: 25px;
     border: 1px solid  rgb(214, 177, 134);
     border-radius: 25px;
     margin: 0.5em;
     font-size: medium;
     padding:auto;
+    z-index: 1;
+    padding-bottom: 20px;
 }
 mat-select{
     background: rgb(245, 202, 147);
     width: 320px;
-    padding: 20px;
     border: 1px solid  rgb(214, 177, 134);
     border-radius: 25px;
     margin: 0.5em;
@@ -51,9 +52,9 @@ mat-select{
     display: flex;
     flex-direction: column;
     justify-content: center;
-
+    padding: 25px;
+    padding-bottom: 20px;
 }
-
 button{
     display: flex;
     justify-content: center;
@@ -66,8 +67,8 @@ button{
     cursor: pointer;
     margin-top: 10px;
     font-size: large;
+    cursor: pointer;
 }
-
 a{
     display: flex;
     justify-content: center;
@@ -76,5 +77,4 @@ a{
     font-weight: 900;
     margin-top: 10px;
     text-decoration: overline;    
-
 }

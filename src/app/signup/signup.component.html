@@ -5,7 +5,7 @@
         <div class="form-group">
             <label for="name"></label>
             <input type="text" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid':
-        submitted && f.name.errors }" placeholder="name" />
+            submitted && f.name.errors }" placeholder="name" />
             <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
                 <div *ngIf="f.name.errors.required">name is required</div>
             </div>
@@ -42,6 +42,12 @@
             3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCp
             yrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
 
+        </div>
+
+        <div class="login-link">
+            <a [routerLink]="['/login']" class="btn btn-link">
+                Login
+            </a>
         </div>
     </form>
 </div>
