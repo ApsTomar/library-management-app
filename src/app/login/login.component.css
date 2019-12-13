@@ -24,7 +24,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
- } 
+ }
  .invalid-feedback{
      color: darkred;
      display: flex;
@@ -76,5 +76,7 @@ a{
     font-size: 1.1em;
     font-weight: 900;
     margin-top: 10px;
-    text-decoration: overline;    
+    text-decoration: overline;
 }
+
+/* TODO some of the CSS seems repetitive in different containers like for button, a , inputs etc. This can be moved in global css file (Styles.css) */

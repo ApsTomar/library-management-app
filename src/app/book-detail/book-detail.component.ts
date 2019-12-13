@@ -24,7 +24,7 @@ export class BookDetailComponent implements OnInit {
   getBook(): void {
     const id = +this.activatedRoute.snapshot.paramMap.get('id');
     this.bookService.getBook(id)
-      .subscribe(book => this.book = book);
+      .subscribe(book => this.book = book); // TODO Handle error as well
   }
 
   goBack(): void {

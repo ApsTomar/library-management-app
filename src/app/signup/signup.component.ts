@@ -39,10 +39,10 @@ export class SignupComponent implements OnInit {
   }
 
   onSubmit() {
-    this.submitted = true
+    this.submitted = true // Missing Semicolon
     if (this.signupForm.invalid) {
       console.log(this.submitted);
-
+      // NO Console logs or debuggers
       this.loading = false;
       return;
     }

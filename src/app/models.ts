@@ -14,3 +14,5 @@ export class User {
     password: string
     token: string
 }
+
+// TODO semicolon is missing after every field. Also Move this to a folder Models and keep related models inside separate model files

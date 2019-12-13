@@ -41,6 +41,7 @@ export class AuthenticationService {
     this.currentUserSubject.next(null);
   }
 
+  // TODO add access modifier like private, public to functions and variable
   signup(name: string, email: string, password: string) {
     return this.http.post<any>(`${this.baseUrl}/register`, { name, email, password })
       .pipe(

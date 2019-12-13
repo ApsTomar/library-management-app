@@ -1,6 +1,8 @@
+/* TODO This can be moved in global CSS File (styles.css) */
 *{
     font-family: fantasy;
 }
+
 .heading{
     display: flex;
     font-size: xx-large;
@@ -24,7 +26,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
- } 
+ }
  .invalid-feedback{
      color: darkred;
  }
@@ -62,5 +64,5 @@ a{
     font-size: 1.1em;
     font-weight: 900;
     margin-top: 10px;
-    text-decoration: overline;    
+    text-decoration: overline;
 }
