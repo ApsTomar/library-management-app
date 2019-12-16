@@ -1,9 +1,35 @@
-<h2>All Books</h2>
+<div class="heading">Library</div>
 
-<ol class="book-list">
-    <li *ngFor="let book of books">
-        <a routerLink="/detail/{{book.id}}">
-            <span class="badge">{{book.id}}</span> {{book.name}}
-        </a>
-    </li>
-</ol>
+
+    <mat-label>Search By Name</mat-label>
+    <input (keyup)="search($event.target.value)">
+    <mat-label>Search By Author</mat-label>
+    <input (keyup)="search('',$event.target.value)">
+    <mat-label>Search By Topic</mat-label>
+    <input (keyup)="search('','',$event.target.value)">
+
+<table class="book-table">
+    <tr>
+        <th class="serial">#</th>
+        <th class="row-data">Book Title</th>
+        <th class="row-data">Author</th>
+        <th class="row-data">Topic</th>
+    </tr>
+    <tr *ngFor="let book of books">
+        <td class="serial">.
+        </td>
+        <td class="row-data">
+            <a [routerLink]="['./', 'book-detail', book.id]">
+                <span class="badge">{{book.name}}</span>
+            </a>
+        </td>
+        <td class="row-data">
+            <a [routerLink]="['./', 'author-detail', book.authorId]">
+                <span class="badge">{{book.authorName}}</span>
+            </a>
+        </td>
+        <td class="row-data"> 
+            <span class="badge">{{book.subject}}</span>
+        </td>
+    </tr>
+</table>

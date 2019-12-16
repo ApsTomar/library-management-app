@@ -4,6 +4,7 @@ import { BookDetailComponent } from './book-detail/book-detail.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { BookSearchComponent } from './book-search/book-search.component';
+import { BooksComponent } from './books/books.component';
 
 
 const routes: Routes = [
@@ -11,7 +12,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'book-search', component: BookSearchComponent },
-  { path: 'detail/:id', component: BookDetailComponent },
+  { path: 'all-books', component: BooksComponent },
+  // { path: 'book-detail/:id', component: BookDetailComponent },
 ];
 
 @NgModule({

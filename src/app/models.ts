@@ -1,16 +1,24 @@
 export class Book {
+    id: number
     name: string
     subject: string
-    authorID: string
+    authorId: number
+    authorName: string
     available: boolean
     availableDate: Date
 }
 
 export class User {
-    id: string
+    id: number
     name: string
     email: string
     accountRole: string
     password: string
     token: string
+}
+
+export class Author {
+    id: number
+    name: string
+    dateOfBirth: Date
 }
