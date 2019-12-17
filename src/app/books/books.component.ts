@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Book, Author } from '../models';
 import { BookService } from '../_services/book.service';
-import 'lodash';
-declare var _: any;
+import { FormControl, Validators } from '@angular/forms';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-books',
@@ -12,15 +12,8 @@ declare var _: any;
 export class BooksComponent implements OnInit {
   books: Book[] = [];
   bookSearch: Book[] = [];
-  searchOptipns: {
-    name: string,
-    author: string,
-    subject: string
-  } = {
-     name : '',
-     author: '',
-     subject: ''
-  }
+  searchOption = new FormControl('name', Validators.required);
+
   constructor(
     private bookService: BookService
   ) { }
@@ -34,20 +27,11 @@ export class BooksComponent implements OnInit {
       this.books = books;
       this.bookSearch = this.books;
     });
-    this.search('',);
   }
 
-  // onKey(value) {
-  //   this.bookNames = this.search(value);
-  // }
-
-  search(name?: string,author?: string, subject?: string) {
-  console.log(name)
-    this.books =  this.bookSearch.filter(option =>
-     (name && (option.name.toLowerCase().includes(name.toLowerCase()) || name == '') ) && 
-      (author && (option.authorName.toLowerCase().includes(author.toLowerCase()) || author == '')) &&
-     (subject && (option.subject.toLowerCase().includes(subject.toLowerCase()) || subject == ''))
+  search(term: string) {
+    this.books = this.bookSearch.filter(option =>
+      option[this.searchOption.value].toLowerCase().includes(term.toLowerCase())
     );
-    console.log(this.books)
   }
 }

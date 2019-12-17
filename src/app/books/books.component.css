@@ -1,9 +1,23 @@
+.topnav{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: rgb(70, 68, 68);
+    border-radius:30px;
+    padding: 15px;
+}
+.topnav a{
+    color: gold;
+    font-size: large;
+}
 .heading{
     display: flex;
     flex-direction: column;
-    font-size: 44px;
+    font-size: 30px;
     align-items: center;
     margin: 20px;
+    padding-top: 20px;
     font-weight: bold;
     text-decoration: overline;
 }
@@ -24,7 +38,7 @@
     content: counter(serial-number);
 }
 .serial{
-    width: 15%;
+    width: 16%;
     text-align: center;
 }
 tr{
@@ -43,6 +57,25 @@ th{
     padding-bottom: 20%;
 }
 .row-data{
-    width: 27%;
+    width: 28%;
     text-align: center;
+}
+.drop-down{
+    margin-left: 40px;
+
+}
+.label{
+    font-size: 1.2em;
+    margin-bottom: 5px;
+}
+mat-option{
+    background-color: rgb(252, 236, 217);
+}
+input{
+    border-radius: 25px;
+    background-color: rgb(252, 236, 217);
+    padding: 13px;
+    margin-left: 15px;
+    font-size: medium;
+    width: 50%;
 }

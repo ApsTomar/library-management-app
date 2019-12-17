@@ -4,7 +4,8 @@
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <div class="drop-down" [ngClass]="{ 'is-invalid':submitted && f.accountTypes.errors }">
             <label for="accountTypes"></label>
-            <mat-select formControlName="accountTypes" [ngClass]="{ 'is-invalid':submitted && f.accountTypes.errors }">
+            <mat-select formControlName="accountTypes" [ngClass]="{ 'is-invalid':submitted &&
+             f.accountTypes.errors }">
                 <mat-option value="" disabled>select account type</mat-option>
                 <mat-option *ngFor="let account of accountTypes" [value]="account">
                     {{account}}

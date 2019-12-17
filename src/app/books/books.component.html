@@ -1,12 +1,22 @@
-<div class="heading">Library</div>
+<div class="topnav">
+    <a class="active" href="#home">Home</a>
+    <a href="all-books">All Books</a>
+    <a href="authors">Authors</a>
+    <a href="subjects">Subjects</a>
+</div>
 
+<div class="heading">Books Collection</div>
 
-    <mat-label>Search By Name</mat-label>
-    <input (keyup)="search($event.target.value)">
-    <mat-label>Search By Author</mat-label>
-    <input (keyup)="search('',$event.target.value)">
-    <mat-label>Search By Topic</mat-label>
-    <input (keyup)="search('','',$event.target.value)">
+<mat-form-field class="drop-down">
+    <mat-label class="label">Search Book By</mat-label>
+    <mat-select [formControl]="searchOption">
+        <mat-option value="name">Name</mat-option>
+        <mat-option value="authorName">Author</mat-option>
+        <mat-option value="subject">Topic</mat-option>
+    </mat-select>
+</mat-form-field>
+
+<input (keyup)="search($event.target.value)" [disabled]="searchOption.status == 'INVALID'">
 
 <table class="book-table">
     <tr>
@@ -28,7 +38,7 @@
                 <span class="badge">{{book.authorName}}</span>
             </a>
         </td>
-        <td class="row-data"> 
+        <td class="row-data">
             <span class="badge">{{book.subject}}</span>
         </td>
     </tr>
