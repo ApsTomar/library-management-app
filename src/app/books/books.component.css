@@ -3,7 +3,7 @@
     justify-content: space-around;
     margin-top: 20px;
     margin-bottom: 20px;
-    background-color: rgb(70, 68, 68);
+    background-color: black;
     border-radius:30px;
     padding: 15px;
 }
@@ -14,12 +14,13 @@
 .heading{
     display: flex;
     flex-direction: column;
-    font-size: 30px;
+    font-size: 28px;
     align-items: center;
     margin: 20px;
     padding-top: 20px;
     font-weight: bold;
     text-decoration: overline;
+    color:rgb(143, 36, 36);
 }
 .book-table{
     counter-reset: serial-number;

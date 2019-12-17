@@ -31,7 +31,7 @@ export class SignupComponent implements OnInit {
       password: ['', Validators.required],
     });
 
-    this.returnUrl = '/book-search';
+    this.returnUrl = '/home';
   }
 
   get f() {

@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
-  { path: 'book-search', component: BookSearchComponent },
+  { path: 'home', component: BookSearchComponent },
   { path: 'all-books', component: BooksComponent },
   // { path: 'book-detail/:id', component: BookDetailComponent },
 ];
