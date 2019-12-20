@@ -20,5 +20,10 @@ export class User {
 export class Author {
     id: number
     name: string
-    dateOfBirth: Date
+    dateOfBirth: string
+}
+
+export class Subject {
+    id: number
+    name: string
 }

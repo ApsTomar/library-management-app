@@ -8,8 +8,7 @@ body {
     font-family: fantasy; 
     background-size: cover;
     background: linear-gradient(rgba(255, 255, 255, 0.650), rgba(255, 255, 255, 0.650)),
-     url("assets/library_image.jpg") no-repeat center center;
-     background-size: 100% 100%;
+     url("assets/library_image.jpg") no-repeat center center/cover;
 }
 
 .mat-select-panel-wrap .mat-select-panel{

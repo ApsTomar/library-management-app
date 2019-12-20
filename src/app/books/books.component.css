@@ -1,22 +1,9 @@
-.topnav{
-    display: flex;
-    justify-content: space-around;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    background-color: black;
-    border-radius:30px;
-    padding: 15px;
-}
-.topnav a{
-    color: gold;
-    font-size: large;
-}
 .heading{
     display: flex;
     flex-direction: column;
-    font-size: 28px;
+    font-size: 23px;
     align-items: center;
-    margin: 20px;
+    margin: 0 10px 0 10px;
     padding-top: 20px;
     font-weight: bold;
     text-decoration: overline;
@@ -26,13 +13,14 @@
     counter-reset: serial-number;
     display: flex;
     flex-direction: column;
-    background-color: rgb(70, 68, 68);
     width: 90%;
-    margin: 35px;
+    margin: 10px 35px 10px 35px;
     border: 2px;
     border-radius: 20px;
+    background-color: rgb(70, 68, 68);
     color: gold;
     padding:20px 0 0 0;
+    box-shadow: 10px 10px 10px green;
 }
 .book-table td:first-child::before{
     counter-increment: serial-number;  
@@ -75,8 +63,11 @@ mat-option{
 input{
     border-radius: 25px;
     background-color: rgb(252, 236, 217);
-    padding: 13px;
+    padding: 10px;
     margin-left: 15px;
     font-size: medium;
     width: 50%;
+    border: solid;
+    border-width: thin;
+    border-color: brown;
 }

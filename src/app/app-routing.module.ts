@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { BookDetailComponent } from './book-detail/book-detail.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { BookSearchComponent } from './book-search/book-search.component';
 import { BooksComponent } from './books/books.component';
+import { AuthorsComponent } from './authors/authors.component';
+import { SubjectsComponent } from './subjects/subjects.component';
 
 
 const routes: Routes = [
@@ -13,6 +14,8 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'home', component: BookSearchComponent },
   { path: 'all-books', component: BooksComponent },
+  { path: 'authors', component: AuthorsComponent },
+  { path: 'subjects', component: SubjectsComponent },
   // { path: 'book-detail/:id', component: BookDetailComponent },
 ];
 

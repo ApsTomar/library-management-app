@@ -13,9 +13,13 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SignupComponent } from './signup/signup.component';
 import { JWTInterceptor } from './_helpers/jwt.interceptor';
 import { ErrorInterceptor } from './_helpers/error.interceptor';
-import {MatSelectModule} from '@angular/material/select';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatCardModule } from '@angular/material';
 import { BookSearchComponent } from './book-search/book-search.component';
+import { AuthorsComponent } from './authors/authors.component';
+import { SubjectsComponent } from './subjects/subjects.component';
+import { TopnavComponent } from './topnav/topnav.component';
 
 
 @NgModule({
@@ -26,7 +30,10 @@ import { BookSearchComponent } from './book-search/book-search.component';
     LoginComponent,
     AlertsComponent,
     SignupComponent,
-    BookSearchComponent
+    BookSearchComponent,
+    AuthorsComponent,
+    SubjectsComponent,
+    TopnavComponent
   ],
   imports: [
     MatSelectModule,
@@ -36,7 +43,8 @@ import { BookSearchComponent } from './book-search/book-search.component';
     BrowserAnimationsModule,
     ReactiveFormsModule,
     FormsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatCardModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JWTInterceptor, multi: true },

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Book, Author } from '../models';
+import { Book } from '../models';
 import { BookService } from '../_services/book.service';
 import { FormControl, Validators } from '@angular/forms';
-import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-books',
