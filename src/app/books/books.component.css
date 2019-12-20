@@ -13,8 +13,8 @@
     counter-reset: serial-number;
     display: flex;
     flex-direction: column;
-    width: 90%;
-    margin: 10px 35px 10px 35px;
+    width: 80%;
+    margin: 10px 35px 10px 115px;
     border: 2px;
     border-radius: 20px;
     background-color: rgb(70, 68, 68);
