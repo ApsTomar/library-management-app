@@ -11,7 +11,6 @@ export class TopnavComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.mini)
   }
 
 }
