@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Subject, Book } from '../models';
+import { Book } from '../models/book-model';
+import { Subject } from '../models/subject-model';
+
 import { FormControl, Validators } from '@angular/forms';
 import { BookService } from '../_services/book.service';
 
@@ -25,7 +27,7 @@ export class SubjectsComponent implements OnInit {
     this.getSubjects();
   }
 
-  getSubjects(): void {
+  private getSubjects(): void {
     this.bookService.getSubjects().subscribe(subjects => {
       this.subjects = subjects;
       this.subjectSearch = this.subjects;
@@ -33,7 +35,7 @@ export class SubjectsComponent implements OnInit {
     });
   }
 
-  getBooksBySubject(subjects: Subject[]) {
+  private getBooksBySubject(subjects: Subject[]) {
     for (let subject of subjects) {
       let subjectBooks: Book[] = [];
       this.bookService.getBooksBySubjectId(subject.id).subscribe(books => {
@@ -55,7 +57,7 @@ export class SubjectsComponent implements OnInit {
     }
 
   }
-  search(term: string) {
+  public search(term: string) {
     this.subjects = this.subjectSearch.filter(option =>
       option[this.searchOption.value].toLowerCase().includes(term.toLowerCase())
     );

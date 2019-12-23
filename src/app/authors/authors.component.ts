@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Author, Book } from '../models';
+import { Author } from '../models/author-model';
+import { Book } from '../models/book-model';
+
 import { FormControl, Validators } from '@angular/forms';
 import { BookService } from '../_services/book.service';
 
@@ -25,7 +27,7 @@ export class AuthorsComponent implements OnInit {
     this.getAuthors();
   }
 
-  getAuthors(): void {
+  private getAuthors(): void {
     this.bookService.getAuthors().subscribe(authors => {
       this.authors = authors;
       this.authorSearch = this.authors;
@@ -33,7 +35,7 @@ export class AuthorsComponent implements OnInit {
     });
   }
 
-  getBooksByAuthor(authors: Author[]) {
+  private getBooksByAuthor(authors: Author[]) {
     for (let author of authors) {
       let authorBooks: Book[] = [];
       this.bookService.getBooksByAuthorId(author.id).subscribe(books => {
@@ -56,7 +58,8 @@ export class AuthorsComponent implements OnInit {
     }
 
   }
-  search(term: string) {
+
+  public search(term: string) {
     this.authors = this.authorSearch.filter(option =>
       option[this.searchOption.value].toLowerCase().includes(term.toLowerCase())
     );
