@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Book } from '../models';
+import { Book } from '../models/book-model';
 import { BookService } from '../_services/book.service';
 import { FormControl, Validators } from '@angular/forms';
 
@@ -21,14 +21,14 @@ export class BooksComponent implements OnInit {
     this.getBooks();
   }
 
-  getBooks(): void {
+  private getBooks(): void {
     this.bookService.getBooks().subscribe(books => {
       this.books = books;
       this.bookSearch = this.books;
     });
   }
 
-  search(term: string) {
+  public search(term: string) {
     this.books = this.bookSearch.filter(option =>
       option[this.searchOption.value].toLowerCase().includes(term.toLowerCase())
     );

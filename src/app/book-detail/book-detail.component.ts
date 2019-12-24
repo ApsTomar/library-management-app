@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Book } from '../models';
+import { Book } from '../models/book-model';
 import { BookService } from '../_services/book.service';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
@@ -21,13 +21,13 @@ export class BookDetailComponent implements OnInit {
     this.getBook();
   }
 
-  getBook(): void {
+  private getBook(): void {
     const id = +this.activatedRoute.snapshot.paramMap.get('id');
     this.bookService.getBook(id)
       .subscribe(book => this.book = book);
   }
 
-  goBack(): void {
+  public goBack(): void {
     this.location.back();
   }
 

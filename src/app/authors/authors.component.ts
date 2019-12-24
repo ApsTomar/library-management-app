@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Author, Book } from '../models';
+import { Author } from '../models/author-model';
+import { Book } from '../models/book-model';
+
 import { FormControl, Validators } from '@angular/forms';
 import { BookService } from '../_services/book.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-authors',
@@ -18,14 +21,15 @@ export class AuthorsComponent implements OnInit {
   searchOption = new FormControl('name', Validators.required);
 
   constructor(
-    private bookService: BookService
+    private bookService: BookService,
+    private snackBar: MatSnackBar,
   ) { }
 
   ngOnInit() {
     this.getAuthors();
   }
 
-  getAuthors(): void {
+  private getAuthors(): void {
     this.bookService.getAuthors().subscribe(authors => {
       this.authors = authors;
       this.authorSearch = this.authors;
@@ -33,12 +37,11 @@ export class AuthorsComponent implements OnInit {
     });
   }
 
-  getBooksByAuthor(authors: Author[]) {
+  private getBooksByAuthor(authors: Author[]) {
     for (let author of authors) {
       let authorBooks: Book[] = [];
       this.bookService.getBooksByAuthorId(author.id).subscribe(books => {
         authorBooks = books;
-        console.log(authorBooks)
         if (authorBooks.length <= 3) {
           this.bookMap = {
             ...this.bookMap,
@@ -51,12 +54,15 @@ export class AuthorsComponent implements OnInit {
           }
         }
         this.authorBooksLoad = true;
-      });
+      },
+      
+      ); 
 
     }
 
   }
-  search(term: string) {
+
+  public search(term: string) {
     this.authors = this.authorSearch.filter(option =>
       option[this.searchOption.value].toLowerCase().includes(term.toLowerCase())
     );

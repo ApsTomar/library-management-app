@@ -1,7 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { Book, Author, Subject } from '../models';
+import { Subject } from '../models/subject-model';
+import { Book } from '../models/book-model';
+
+import { Author } from '../models/author-model';
+
 
 @Injectable({
   providedIn: 'root'
@@ -16,31 +20,31 @@ export class BookService {
     private http: HttpClient,
   ) { }
 
-  getBooks(): Observable<Book[]> {
+  public getBooks(): Observable<Book[]> {
     return this.http.get<Book[]>(`${this.baseUrl}/get/books`);
   }
 
-  getBook(id: number): Observable<Book> {
+  public getBook(id: number): Observable<Book> {
     return this.http.get<Book>(`${this.baseUrl}/get/book-by-id/${id}`);
   }
 
-  getBooksByName(name: string): Observable<Book[]> {
+  public getBooksByName(name: string): Observable<Book[]> {
     return this.http.get<Book[]>(`${this.baseUrl}/get/books-by-name/${name}`);
   }
 
-  getAuthors(): Observable<Author[]> {
+  public getAuthors(): Observable<Author[]> {
     return this.http.get<Author[]>(`${this.baseUrl}/get/authors`);
   }
 
-  getBooksByAuthorId(authorId: number): Observable<Book[]> {
+  public getBooksByAuthorId(authorId: number): Observable<Book[]> {
     return this.http.get<Book[]>(`${this.baseUrl}/get/books-by-author/${authorId}`);
   }
 
-  getSubjects(): Observable<Subject[]> {
+  public getSubjects(): Observable<Subject[]> {
     return this.http.get<Subject[]>(`${this.baseUrl}/get/subjects`);
   }
 
-  getBooksBySubjectId(subjectId: number): Observable<Book[]> {
+  public getBooksBySubjectId(subjectId: number): Observable<Book[]> {
     return this.http.get<Book[]>(`${this.baseUrl}/get/books-by-subject/${subjectId}`);
   }
 }

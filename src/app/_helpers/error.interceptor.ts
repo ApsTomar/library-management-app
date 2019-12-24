@@ -27,7 +27,7 @@ export class ErrorInterceptor implements HttpInterceptor {
       if (err.statusText==="Unknown Error"){
         this.errorMsg = "Something went wrong"
       }else {
-        this.errorMsg = err.statusText;
+        this.errorMsg = err.error;
       };
       this.snackBar.open(this.errorMsg,'dismiss',{
         duration: 2000,
@@ -35,7 +35,6 @@ export class ErrorInterceptor implements HttpInterceptor {
       })
       if (err.status == 401) {
         this.authenticationService.logout();
-        location.reload(true);
       }
 
       const error = err.error.message || err.statusText;
