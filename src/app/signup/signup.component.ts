@@ -39,7 +39,7 @@ export class SignupComponent implements OnInit {
   }
 
   public onSubmit() {
-    this.submitted = true
+    this.submitted = true;
     if (this.signupForm.invalid) {
       console.log(this.submitted);
 

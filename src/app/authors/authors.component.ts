@@ -4,6 +4,7 @@ import { Book } from '../models/book-model';
 
 import { FormControl, Validators } from '@angular/forms';
 import { BookService } from '../_services/book.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-authors',
@@ -20,7 +21,8 @@ export class AuthorsComponent implements OnInit {
   searchOption = new FormControl('name', Validators.required);
 
   constructor(
-    private bookService: BookService
+    private bookService: BookService,
+    private snackBar: MatSnackBar,
   ) { }
 
   ngOnInit() {
@@ -40,7 +42,6 @@ export class AuthorsComponent implements OnInit {
       let authorBooks: Book[] = [];
       this.bookService.getBooksByAuthorId(author.id).subscribe(books => {
         authorBooks = books;
-        console.log(authorBooks)
         if (authorBooks.length <= 3) {
           this.bookMap = {
             ...this.bookMap,
@@ -53,7 +54,9 @@ export class AuthorsComponent implements OnInit {
           }
         }
         this.authorBooksLoad = true;
-      });
+      },
+      
+      ); 
 
     }
 
