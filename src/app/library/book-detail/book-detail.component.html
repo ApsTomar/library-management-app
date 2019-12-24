@@ -1,0 +1,14 @@
+<app-topnav mini='true'></app-topnav>
+<div *ngIf="book">
+    <h2>{{book.name}}</h2>
+    <div class="details">
+        {{book.authorName}}
+        {{book.subject}}
+    </div>
+    <button (click)="checkAvailability()">Check Availability</button>
+    <div *ngIf="buttonClicked" class="availabilityDetails">
+        <div>Availability:&nbsp;{{book.availability}}</div>
+        <div *ngIf="!book.availability">AvailableDate: {{book.AvailableDate}}</div>
+    </div>
+    <button (click)="goBack()">back</button>
+</div>

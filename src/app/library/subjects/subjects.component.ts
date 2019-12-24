@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Book } from '../models/book-model';
-import { Subject } from '../models/subject-model';
+import { Book } from '../../models/book-model';
+import { Subject } from '../../models/subject-model';
 
 import { FormControl, Validators } from '@angular/forms';
-import { BookService } from '../_services/book.service';
+import { BookService } from '../../_services/book.service';
 
 @Component({
   selector: 'app-subjects',

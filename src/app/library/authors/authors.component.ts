@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Author } from '../models/author-model';
-import { Book } from '../models/book-model';
+import { Author } from '../../models/author-model';
+import { Book } from '../../models/book-model';
 
 import { FormControl, Validators } from '@angular/forms';
-import { BookService } from '../_services/book.service';
+import { BookService } from '../../_services/book.service';
 import { MatSnackBar } from '@angular/material';
 
 @Component({

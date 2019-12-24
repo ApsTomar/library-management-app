@@ -3,8 +3,8 @@ import { Observable, Subject, pipe } from 'rxjs';
 import {
   debounceTime, distinctUntilChanged, switchMap, map, filter
 } from 'rxjs/operators';
-import { Book } from '../models/book-model';
-import { BookService } from '../_services/book.service';
+import { Book } from '../../models/book-model';
+import { BookService } from '../../_services/book.service';
 
 @Component({
   selector: 'app-book-search',

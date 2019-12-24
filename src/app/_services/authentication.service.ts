@@ -39,7 +39,7 @@ export class AuthenticationService {
   public logout() {
     localStorage.removeItem('currentUser');
     this.currentUserSubject.next(null);
-    this.router.navigate(['/','login'])
+    this.router.navigate(['/','auth','login'])
   }
 
   public signup(name: string, email: string, password: string) {
