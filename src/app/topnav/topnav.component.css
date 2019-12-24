@@ -1,31 +1,49 @@
+.flex-container{
+    display: flex;
+}
 .topnav{
     display: flex;
     justify-content: space-around;
-    margin: 10px 10px 10px 10px;
+    margin: 24px 5px 10px 5px;
     background-color: black;
     border-radius:30px;
     padding: 15px;
+    width: 88%;
 }
 .topnav a{
     color: gold;
     font-size: large;
 }
+.logout{
+    cursor: pointer;
+    margin-top: 24px;
+    height: 65px;
+    width: 85px;
+    margin-right: 5px;
+}
+
+.hideLogout{
+    display: none;
+}
+.hideTopnav{
+    display: none;
+}
+
 .header {
     display: flex;
     align-items: center;
     padding-top: 12px;
 }
 .header img{
-    padding-left: 10px;
-    height: 120px;
-    width: 130px;
+    padding-left: 5px;
+    height: 100px;
+    width: 110px;
 }
 
 .heading {
     color: rgb(110, 68, 6);
     font-family: '';
-    font-size: 350%;
-    height: 8%;
+    font-size: 400%;
     font-weight: normal;
     padding: 0 20px 0 20px;
 }
@@ -35,15 +53,10 @@
     padding-top: 12px;
 }
 .headerMini .heading {
-    color: rgb(110, 68, 6);
-    font-family: '';
-    font-size: 250%;
-    height: 8%;
-    font-weight: normal;
-    padding: 0 20px 0 20px;
+    display: none;
 }
 .headerMini img{
-    padding-left: 10px;
-    height: 70px;
-    width: 80px;
+    padding-left: 5px;
+    height: 65px;
+    width: 70px;
 }

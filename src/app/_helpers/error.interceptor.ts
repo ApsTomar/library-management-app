@@ -15,7 +15,7 @@ export class ErrorInterceptor implements HttpInterceptor {
   constructor(
     private authenticationService: AuthenticationService,
     private snackBar: MatSnackBar,
-    ) { }
+  ) { }
 
   handleError(error: HttpErrorResponse) {
     console.log(error.message);
@@ -24,14 +24,17 @@ export class ErrorInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(req).pipe(catchError(err => {
-      if (err.statusText==="Unknown Error"){
+      if (err.statusText === "Unknown Error") {
         this.errorMsg = "Something went wrong"
-      }else {
+      } else {
         this.errorMsg = err.error;
       };
-      this.snackBar.open(this.errorMsg,'dismiss',{
+      if (err.status == 401) {
+        this.errorMsg = "please login with valid credentials"
+      }
+      this.snackBar.open(this.errorMsg, 'dismiss', {
         duration: 2000,
-        panelClass:'warn'
+        panelClass: 'warn'
       })
       if (err.status == 401) {
         this.authenticationService.logout();

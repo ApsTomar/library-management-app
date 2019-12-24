@@ -6,17 +6,19 @@ import { BookSearchComponent } from './book-search/book-search.component';
 import { BooksComponent } from './books/books.component';
 import { AuthorsComponent } from './authors/authors.component';
 import { SubjectsComponent } from './subjects/subjects.component';
+import { BookDetailComponent } from './book-detail/book-detail.component';
+import { AuthGuard } from './_guards/auth.guard';
 
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent },
+  { path: 'login', component: LoginComponent, },
   { path: 'signup', component: SignupComponent },
-  { path: 'home', component: BookSearchComponent },
-  { path: 'all-books', component: BooksComponent },
-  { path: 'authors', component: AuthorsComponent },
-  { path: 'subjects', component: SubjectsComponent },
-  // { path: 'book-detail/:id', component: BookDetailComponent },
+  { path: 'home', component: BookSearchComponent, canActivate: [AuthGuard] },
+  { path: 'books', component: BooksComponent, canActivate: [AuthGuard] },
+  { path: 'authors', component: AuthorsComponent, canActivate: [AuthGuard] },
+  { path: 'subjects', component: SubjectsComponent, canActivate: [AuthGuard] },
+  { path: 'books/book-detail/:id', component: BookDetailComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({

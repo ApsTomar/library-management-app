@@ -1,11 +1,14 @@
-<div [ngClass]="mini=== 'true' ? 'headerMini' : 'header'">
-    <img class="logo_img" src="../assets/logo.jpeg">
-    <div class="heading">{{title}}</div>
-</div>
+<div class="flex-container">
+    <div [ngClass]="mini=== 'true' ? 'headerMini' : 'header'">
+        <img class="logo_img" src="../assets/logo.jpeg">
+        <div class="heading">{{title}}</div>
+    </div>
 
-<div class="topnav">
-    <a class="active" routerLink="/home">Home</a>
-    <a routerLink="/all-books">All Books</a>
-    <a routerLink="/authors">Authors</a>
-    <a routerLink="/subjects">Subjects</a>
-</div>  
+    <div [ngClass]="mini=== 'true' ? 'topnav' : 'hideTopnav'">
+        <a class="active" routerLink="/home">Home</a>
+        <a routerLink="/books">All Books</a>
+        <a routerLink="/authors">Authors</a>
+        <a routerLink="/subjects">Subjects</a>
+    </div>
+    <img [ngClass]="mini=== 'true' ? 'logout' : 'hideLogout'" src="../../assets/logout.png" (click)="logout()">
+</div>
