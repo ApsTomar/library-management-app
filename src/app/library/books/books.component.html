@@ -1,0 +1,39 @@
+<app-topnav mini='true'></app-topnav>
+<div class="heading">Books Collection</div>
+
+<mat-form-field class="drop-down">
+    <mat-label class="label">Search Book By</mat-label>
+    <mat-select [formControl]="searchOption">
+        <mat-option value="name">Name</mat-option>
+        <mat-option value="authorName">Author</mat-option>
+        <mat-option value="subject">Topic</mat-option>
+    </mat-select>
+</mat-form-field>
+
+<input (keyup)="search($event.target.value)" [disabled]="searchOption.status == 'INVALID'">
+
+<table class="book-table">
+    <tr>
+        <th class="serial">#</th>
+        <th class="row-data">Book Title</th>
+        <th class="row-data">Author</th>
+        <th class="row-data">Subject</th>
+    </tr>
+    <tr *ngFor="let book of books">
+        <td class="serial">.
+        </td>
+        <td class="row-data">
+            <a [routerLink]="['./', 'book-detail', book.id]">
+                <span class="badge">{{book.name}}</span>
+            </a>
+        </td>
+        <td class="row-data">
+            <a [routerLink]="['./', 'author-detail', book.authorId]">
+                <span class="badge">{{book.authorName}}</span>
+            </a>
+        </td>
+        <td class="row-data">
+            <span class="badge">{{book.subject}}</span>
+        </td>
+    </tr>
+</table>

@@ -1,0 +1,73 @@
+.heading{
+    display: flex;
+    flex-direction: column;
+    font-size: 28px;
+    align-items: center;
+    margin: 0 10px 10px 10px;
+    padding-top: 20px;
+    font-weight: bold;
+    text-decoration: overline;
+    color:rgb(143, 36, 36);
+}
+.book-table{
+    counter-reset: serial-number;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 10px 35px 10px 115px;
+    border: 2px;
+    border-radius: 20px;
+    background-color: rgb(70, 68, 68);
+    color: gold;
+    padding:20px 0 0 0;
+    box-shadow: 10px 10px 10px green;
+}
+.book-table td:first-child::before{
+    counter-increment: serial-number;  
+    content: counter(serial-number);
+}
+.serial{
+    width: 16%;
+    text-align: center;
+}
+tr{
+    display: flex;
+    justify-content: space-around;
+    height: 50px;
+    font-weight: bolder;
+}
+a{
+    text-decoration: none;
+    color: gold;
+}
+th{
+    font-size: 1.1em;
+    color: white;
+    padding-bottom: 20%;
+}
+.row-data{
+    width: 28%;
+    text-align: center;
+}
+.drop-down{
+    margin-left: 125px;
+
+}
+.label{
+    font-size: 1.2em;
+    margin-bottom: 5px;
+}
+mat-option{
+    background-color: rgb(252, 236, 217);
+}
+input{
+    border-radius: 25px;
+    background-color: rgb(252, 236, 217);
+    padding: 10px;
+    margin-left: 15px;
+    font-size: medium;
+    width: 50%;
+    border: solid;
+    border-width: thin;
+    border-color: brown;
+}

@@ -2,21 +2,19 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
-import { AuthenticationService } from '../_services/authentication.service';
-import { AlertService } from '../_services/alert.service';
+import { AuthenticationService } from '../../_services/authentication.service';
+import { AlertService } from '../../_services/alert.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-signup',
+  templateUrl: './signup.component.html',
+  styleUrls: ['./signup.component.css']
 })
-export class LoginComponent implements OnInit {
-  loginForm: FormGroup;
+export class SignupComponent implements OnInit {
+  signupForm: FormGroup;
   loading = false;
   submitted = false;
   returnUrl: string;
-  accountTypes = ['admin', 'user'];
-  errorElement: string;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -24,34 +22,33 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private authenticationService: AuthenticationService,
     private alertService: AlertService,
-  ) {
-    if (this.authenticationService.currentUserValue) {
-      this.router.navigate(['/']);
-    }
-  }
+  ) { }
 
   ngOnInit() {
-    this.loginForm = this.formBuilder.group({
+    this.signupForm = this.formBuilder.group({
+      name: ['', Validators.required],
       email: ['', Validators.required],
       password: ['', Validators.required],
-      accountTypes: ['', Validators.required]
     });
 
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    this.returnUrl = '/home';
   }
 
   get f() {
-    return this.loginForm.controls;
+    return this.signupForm.controls;
   }
 
-  onSubmit() {
+  public onSubmit() {
     this.submitted = true;
-    if (this.loginForm.invalid) {
+    if (this.signupForm.invalid) {
+      console.log(this.submitted);
+
+      this.loading = false;
       return;
     }
-
     this.loading = true;
-    this.authenticationService.login(this.f.email.value, this.f.password.value, this.f.accountTypes.value)
+
+    this.authenticationService.signup(this.f.name.value, this.f.email.value, this.f.password.value)
       .pipe(first())
       .subscribe(
         data => {

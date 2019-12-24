@@ -1,0 +1,24 @@
+<app-topnav mini='true'></app-topnav>
+<div class="heading">Subjects</div>
+
+<mat-label class="label">Search Subjects:</mat-label>
+<input (keyup)="search($event.target.value)" />
+<div class="flex-container">
+    <div class="subject-list" *ngFor="let subject of subjects">
+        <mat-card class="card">
+            <mat-card-header>
+                <mat-card-title>{{subject.name}}</mat-card-title>
+            </mat-card-header>
+
+            <mat-card-content>
+                <div class="subjectBooks"></div>
+                <div class="" *ngIf="subjectBooksLoad">
+                    <ul class="book-list" *ngFor="let books of bookMap[subject.name]">
+                        <li>{{books.name}}</li>
+                    </ul>
+                </div>
+
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

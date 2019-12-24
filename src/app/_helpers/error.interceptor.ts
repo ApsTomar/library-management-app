@@ -11,10 +11,11 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 @Injectable()
 
 export class ErrorInterceptor implements HttpInterceptor {
+  private errorMsg: string;
   constructor(
     private authenticationService: AuthenticationService,
     private snackBar: MatSnackBar,
-    ) { }
+  ) { }
 
   handleError(error: HttpErrorResponse) {
     console.log(error.message);
@@ -23,13 +24,20 @@ export class ErrorInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(req).pipe(catchError(err => {
-      this.snackBar.open(err.error,'dismiss',{
+      if (err.statusText === "Unknown Error") {
+        this.errorMsg = "Something went wrong"
+      } else {
+        this.errorMsg = err.error;
+      };
+      if (err.status == 401) {
+        this.errorMsg = "please login with valid credentials"
+      }
+      this.snackBar.open(this.errorMsg, 'dismiss', {
         duration: 2000,
-        panelClass:'warn'
+        panelClass: 'warn'
       })
       if (err.status == 401) {
         this.authenticationService.logout();
-        location.reload(true);
       }
 
       const error = err.error.message || err.statusText;

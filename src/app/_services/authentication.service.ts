@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { User } from '../models';
+import { User } from '../models/account-model';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
@@ -24,7 +24,7 @@ export class AuthenticationService {
     return this.currentUserSubject.value;
   }
 
-  login(email: string, password: string, accountRole: string) {
+  public login(email: string, password: string, accountRole: string): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}/login`, { email, password, accountRole })
       .pipe(
         map(user => {
@@ -36,12 +36,13 @@ export class AuthenticationService {
         }));
   }
 
-  logout() {
+  public logout() {
     localStorage.removeItem('currentUser');
     this.currentUserSubject.next(null);
+    this.router.navigate(['/','auth','login'])
   }
 
-  signup(name: string, email: string, password: string) {
+  public signup(name: string, email: string, password: string) {
     return this.http.post<any>(`${this.baseUrl}/register`, { name, email, password })
       .pipe(
         map(user => {

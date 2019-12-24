@@ -1,0 +1,59 @@
+.heading{
+    display: flex;
+    flex-direction: column;
+    font-size: 28px;
+    align-items: center;
+    margin: 0 10px 10px 10px;
+    padding-top: 20px;
+    font-weight: bold;
+    text-decoration: overline;
+    color:rgb(143, 36, 36);
+}
+input{
+    border-radius: 25px;
+    background-color: rgb(252, 236, 217);
+    padding: 10px;
+    margin-left: 15px;
+    font-size: medium;
+    width: 30%;
+    border: solid;
+    border-width: thin;
+    border-color: brown;
+}
+.flex-container{
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 60px;
+    margin-top: 20px;
+}
+.subject-list{
+    width: 25%;
+    display: flex;
+    flex-flow: row wrap;
+}
+.card{
+    width:250px;
+    background-color: rgb(70, 68, 68);
+    color: white;
+    font-family: fantasy;
+    margin-bottom: 20px;
+    border-radius: 25px;
+    box-shadow: 10px 10px 10px green;
+}
+mat-card-header{
+    display: flex;
+    justify-content: center;
+    color: gold;
+    font-size: large;
+}
+.book-list{
+    font-size: medium;
+}
+.mat-card-header .mat-card-title {
+    margin-bottom: 5px;
+}
+.label{
+    margin-left: 65px;
+    font-weight: bolder;
+    font-size: large;
+}
