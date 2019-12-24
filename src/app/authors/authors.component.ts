@@ -54,12 +54,8 @@ export class AuthorsComponent implements OnInit {
           }
         }
         this.authorBooksLoad = true;
-      },
-      
-      ); 
-
+      }); 
     }
-
   }
 
   public search(term: string) {
