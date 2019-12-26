@@ -5,7 +5,7 @@ import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent, },
+  { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
 ];
 
@@ -13,4 +13,5 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class AuthRoutingModule { }
+export class AuthRoutingModule {
+ }

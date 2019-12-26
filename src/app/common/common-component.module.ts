@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { TopnavComponent } from './topnav/topnav.component';
 import { CommonModule } from '@angular/common';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatCardModule, MatSnackBarModule } from '@angular/material';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -11,10 +11,14 @@ import { MatCardModule, MatSnackBarModule } from '@angular/material';
   ],
   imports: [
     CommonModule,
+    RouterModule,
     ReactiveFormsModule,
     FormsModule,
     MatSnackBarModule,
     MatCardModule
+  ],
+  exports: [
+    TopnavComponent
   ]
 })
 export class CommonComponentModule { }

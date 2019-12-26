@@ -6,14 +6,13 @@ import { BookSearchComponent } from './book-search/book-search.component';
 import { AuthorsComponent } from './authors/authors.component';
 import { SubjectsComponent } from './subjects/subjects.component';
 import { MatSelectModule, MatSnackBarModule, MatCardModule } from '@angular/material';
-import { AppRoutingModule } from '../app-routing.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { JWTInterceptor } from '../_helpers/jwt.interceptor';
 import { ErrorInterceptor } from '../_helpers/error.interceptor';
 import { CommonComponentModule } from '../common/common-component.module';
 import { LibraryRoutingModule } from './library-routing.module';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -25,6 +24,7 @@ import { LibraryRoutingModule } from './library-routing.module';
     SubjectsComponent,
   ],
   imports: [
+    CommonModule,
     CommonComponentModule,
     MatSelectModule,
     ReactiveFormsModule,
@@ -36,6 +36,6 @@ import { LibraryRoutingModule } from './library-routing.module';
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JWTInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-  ],
+  ]
 })
-export class LibraryModule { }
+export class LibraryModule {}

@@ -5,10 +5,10 @@
     </div>
 
     <div [ngClass]="mini=== 'true' ? 'topnav' : 'hideTopnav'">
-        <a class="active" routerLink="/home">Home</a>
-        <a routerLink="/books">All Books</a>
-        <a routerLink="/authors">Authors</a>
-        <a routerLink="/subjects">Subjects</a>
+        <a class="active" [routerLink]="['/', 'library', 'home']">Home</a>
+        <a [routerLink]="['/','library','books']">All Books</a>
+        <a [routerLink]="['/','library','authors']">Authors</a>
+        <a [routerLink]="['/','library','subjects']">Subjects</a>
     </div>
     <img [ngClass]="mini=== 'true' ? 'logout' : 'hideLogout'" src="../../assets/logout.png" (click)="logout()">
 </div>

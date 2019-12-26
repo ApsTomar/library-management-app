@@ -15,7 +15,6 @@ import { JWTInterceptor } from '../_helpers/jwt.interceptor';
 import { ErrorInterceptor } from '../_helpers/error.interceptor';
 import { CommonComponentModule } from '../common/common-component.module';
 import { CommonModule } from '@angular/common';
-import { AppModule } from '../app.module';
 
 @NgModule({
   declarations: [    
@@ -23,7 +22,6 @@ import { AppModule } from '../app.module';
     SignupComponent,
   ],
   imports: [
-    AppModule,
     CommonModule,
     CommonComponentModule,
     MatSelectModule,
@@ -31,11 +29,7 @@ import { AppModule } from '../app.module';
     ReactiveFormsModule,
     FormsModule,
     MatSnackBarModule,
-    MatCardModule
-  ],
-  providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: JWTInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-  ],
+    MatCardModule,
+  ]
 })
-export class AuthModule { }
+export class AuthModule {}
