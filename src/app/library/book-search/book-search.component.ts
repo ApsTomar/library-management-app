@@ -1,8 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable, Subject, pipe } from 'rxjs';
-import {
-  debounceTime, distinctUntilChanged, switchMap, map, filter
-} from 'rxjs/operators';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { BehaviorSubject, Subscription } from 'rxjs';
+import { debounceTime, distinctUntilChanged, filter } from 'rxjs/operators';
 import { Book } from '../../models/book-model';
 import { BookService } from '../../_services/book.service';
 
@@ -11,10 +9,10 @@ import { BookService } from '../../_services/book.service';
   templateUrl: './book-search.component.html',
   styleUrls: ['./book-search.component.css']
 })
-export class BookSearchComponent implements OnInit {
-  books$: Observable<Book[]>;
-  private searchTerm = new Subject<string>();
-
+export class BookSearchComponent implements OnInit, OnDestroy {
+  books:Book[];
+  private searchTerm:BehaviorSubject<string> = new BehaviorSubject('');
+  private subscriptions: Subscription[] = [];
   constructor(private bookService: BookService) { }
 
   public search(term: string): void {
@@ -22,11 +20,21 @@ export class BookSearchComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.books$ = this.searchTerm.pipe(
+    this.searchTerm.pipe(
       debounceTime(300),
       distinctUntilChanged(),
-      filter(term => term.length > 0),
-      switchMap((term: string) =>this.bookService.getBooksByName(term)),
-    );
+      filter(term => term.length > 0)
+    ).subscribe(term => {
+      this.bookService.getBooksByName(term);
+    });
+    this.subscriptions.push(this.bookService.booksList$.subscribe(books => {
+      console.log(books);
+      this.books = books;
+    }))
+    
+  }
+  ngOnDestroy(){
+    this.subscriptions.forEach(subs => subs.unsubscribe());
+    this.bookService.reset();
   }
 }
