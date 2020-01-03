@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Book } from '../../models/book-model';
 import { BookService } from '../../_services/book.service';
 import { FormControl, Validators } from '@angular/forms';
+import { AuthenticationService } from 'src/app/_services/authentication.service';
 
 @Component({
   selector: 'app-books',
@@ -14,7 +15,8 @@ export class BooksComponent implements OnInit {
   searchOption = new FormControl('name', Validators.required);
 
   constructor(
-    private bookService: BookService
+    private bookService: BookService,
+    private authenticationService: AuthenticationService
   ) { }
 
   ngOnInit() {

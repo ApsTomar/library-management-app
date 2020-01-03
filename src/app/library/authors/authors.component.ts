@@ -4,7 +4,10 @@ import { Book } from '../../models/book-model';
 
 import { FormControl, Validators } from '@angular/forms';
 import { BookService } from '../../_services/book.service';
-import { MatSnackBar } from '@angular/material';
+import { AuthenticationService } from 'src/app/_services/authentication.service';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { AuthorDialogComponent } from '../author-dialog/author-dialog.component';
+
 
 @Component({
   selector: 'app-authors',
@@ -13,6 +16,11 @@ import { MatSnackBar } from '@angular/material';
 })
 export class AuthorsComponent implements OnInit {
   authors: Author[] = [];
+  newAuthor: Author = {
+    id: 0,
+    name: "",
+    dateOfBirth: ""
+  };
   authorSearch: Author[] = [];
   authorBooksLoad: boolean = false;
   bookMap: {
@@ -22,8 +30,23 @@ export class AuthorsComponent implements OnInit {
 
   constructor(
     private bookService: BookService,
-    private snackBar: MatSnackBar,
+    private authenticationService: AuthenticationService,
+    public dialog: MatDialog
   ) { }
+
+  openDialog() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.autoFocus = true;
+
+    const dialogRef = this.dialog.open(AuthorDialogComponent, dialogConfig);
+    dialogRef.afterClosed().subscribe(data => {
+      let dob = `${data.dob.getDate()} ${data.dob.toLocaleString('default', { month: 'long' })} ${data.dob.getFullYear()}`;
+      this.newAuthor.name = data.name;
+      this.newAuthor.dateOfBirth = dob;
+      this.bookService.addAuthor(this.newAuthor);
+      
+    });
+  }
 
   ngOnInit() {
     this.getAuthors();
@@ -54,7 +77,7 @@ export class AuthorsComponent implements OnInit {
           }
         }
         this.authorBooksLoad = true;
-      }); 
+      });
     }
   }
 
@@ -63,5 +86,4 @@ export class AuthorsComponent implements OnInit {
       option[this.searchOption.value].toLowerCase().includes(term.toLowerCase())
     );
   }
-
 }

@@ -41,17 +41,19 @@ a{
     color: gold;
 }
 th{
-    font-size: 1.1em;
+    font-size: 1.2em;
     color: white;
-    padding-bottom: 20%;
 }
 .row-data{
     width: 28%;
     text-align: center;
 }
+.mat-select-value {
+    
+    font-family: fantasy;
+}
 .drop-down{
     margin-left: 125px;
-
 }
 .label{
     font-size: 1.2em;
@@ -60,14 +62,37 @@ th{
 mat-option{
     background-color: rgb(252, 236, 217);
 }
+.options{
+    display: flex;
+    width: 87%;
+}
+button{
+    display: flex;
+    justify-content: center;
+    background: green;
+    color: gold;  
+    width: 150px;
+    padding: 8px;
+    border: 1px solid rgb(211, 125, 26);
+    border-radius: 25px;
+    font-size: small;
+    cursor: pointer;
+    margin-left: 162px;
+    font-size: large;
+    cursor: pointer;
+    padding: 8px;
+    font-family: fantasy;
+    font-weight: bolder;
+}
 input{
     border-radius: 25px;
     background-color: rgb(252, 236, 217);
-    padding: 10px;
+    padding: 10px 20px 10px 20px;
     margin-left: 15px;
     font-size: medium;
     width: 50%;
     border: solid;
     border-width: thin;
     border-color: brown;
+    height: 1.5em;
 }

@@ -5,14 +5,17 @@ import { AlertsComponent } from '../alerts/alerts.component';
 import { BookSearchComponent } from './book-search/book-search.component';
 import { AuthorsComponent } from './authors/authors.component';
 import { SubjectsComponent } from './subjects/subjects.component';
-import { MatSelectModule, MatSnackBarModule, MatCardModule } from '@angular/material';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { MatSelectModule, MatSnackBarModule, MatCardModule, MatInputModule, MatDatepickerModule, MatNativeDateModule } from '@angular/material';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { JWTInterceptor } from '../_helpers/jwt.interceptor';
 import { ErrorInterceptor } from '../_helpers/error.interceptor';
 import { CommonComponentModule } from '../common/common-component.module';
 import { LibraryRoutingModule } from './library-routing.module';
 import { CommonModule } from '@angular/common';
+import { MatDialogModule } from '@angular/material/dialog';
+import { AuthorDialogComponent } from './author-dialog/author-dialog.component';
+
 
 @NgModule({
   declarations: [
@@ -22,6 +25,7 @@ import { CommonModule } from '@angular/common';
     BookSearchComponent,
     AuthorsComponent,
     SubjectsComponent,
+    AuthorDialogComponent,
   ],
   imports: [
     CommonModule,
@@ -31,11 +35,16 @@ import { CommonModule } from '@angular/common';
     FormsModule,
     MatSnackBarModule,
     MatCardModule,
-    LibraryRoutingModule
+    LibraryRoutingModule,
+    MatDialogModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JWTInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-  ]
+  ],
+  entryComponents: [AuthorDialogComponent],
 })
-export class LibraryModule {}
+export class LibraryModule { }

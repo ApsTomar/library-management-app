@@ -5,6 +5,7 @@ import { Subject } from '../models/subject-model';
 import { Book } from '../models/book-model';
 
 import { Author } from '../models/author-model';
+import { MatSnackBar } from '@angular/material';
 
 
 @Injectable({
@@ -19,11 +20,13 @@ export class BookService {
 
   constructor(
     private http: HttpClient,
-  ) { 
-  }
-  public get booksList$(): Observable<Book[]>{
+    private snackBar: MatSnackBar
+  ) { }
+
+  public get booksList$(): Observable<Book[]> {
     return this.bookList$$.asObservable();
   }
+
   public getBooks(): Observable<Book[]> {
     return this.http.get<Book[]>(`${this.baseUrl}/get/books`);
   }
@@ -34,9 +37,18 @@ export class BookService {
 
   public getBooksByName(name: string) {
     this.http.get<Book[]>(`${this.baseUrl}/get/books-by-name/${name}`).subscribe(books => {
-      if(books){
-          this.bookList$$.next(books);
+      if (books) {
+        this.bookList$$.next(books);
       }
+    });
+  }
+
+  public addAuthor(author: Author) {
+    this.http.post(`${this.baseUrl}/admin/add/author`, author).subscribe(data => {
+      this.snackBar.open('author added successfully', 'dismiss', {
+        duration: 2000,
+        panelClass: 'success'
+      })
     });
   }
 
@@ -55,7 +67,8 @@ export class BookService {
   public getBooksBySubjectId(subjectId: number): Observable<Book[]> {
     return this.http.get<Book[]>(`${this.baseUrl}/get/books-by-subject/${subjectId}`);
   }
-  public reset(){
+
+  public reset() {
     this.bookList$$.next(null);
   }
 }

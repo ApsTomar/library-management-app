@@ -10,8 +10,8 @@ import { BookService } from '../../_services/book.service';
   styleUrls: ['./book-search.component.css']
 })
 export class BookSearchComponent implements OnInit, OnDestroy {
-  books:Book[];
-  private searchTerm:BehaviorSubject<string> = new BehaviorSubject('');
+  books: Book[];
+  private searchTerm: BehaviorSubject<string> = new BehaviorSubject('');
   private subscriptions: Subscription[] = [];
   constructor(private bookService: BookService) { }
 
@@ -27,13 +27,12 @@ export class BookSearchComponent implements OnInit, OnDestroy {
     ).subscribe(term => {
       this.bookService.getBooksByName(term);
     });
+
     this.subscriptions.push(this.bookService.booksList$.subscribe(books => {
-      console.log(books);
       this.books = books;
     }))
-    
   }
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.subscriptions.forEach(subs => subs.unsubscribe());
     this.bookService.reset();
   }

@@ -1,16 +1,22 @@
 <app-topnav mini='true'></app-topnav>
 <div class="heading">Books Collection</div>
 
-<mat-form-field class="drop-down">
-    <mat-label class="label">Search Book By</mat-label>
-    <mat-select [formControl]="searchOption">
-        <mat-option value="name">Name</mat-option>
-        <mat-option value="authorName">Author</mat-option>
-        <mat-option value="subject">Topic</mat-option>
-    </mat-select>
-</mat-form-field>
+<div class="options">
+    <mat-form-field class="drop-down">
+        <mat-label class="label">Search Book By</mat-label>
+        <mat-select [formControl]="searchOption">
+            <mat-option value="name">Name</mat-option>
+            <mat-option value="authorName">Author</mat-option>
+            <mat-option value="subject">Topic</mat-option>
+        </mat-select>
+    </mat-form-field>
 
-<input (keyup)="search($event.target.value)" [disabled]="searchOption.status == 'INVALID'">
+    <input (keyup)="search($event.target.value)" [disabled]="searchOption.status == 'INVALID'">
+
+    <div class="addBook" *ngIf="authenticationService.currentUserValue.accountRole == 'admin'">
+        <button class="addButton">add new book</button>
+    </div>
+</div>
 
 <table class="book-table">
     <tr>

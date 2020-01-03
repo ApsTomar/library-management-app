@@ -4,6 +4,7 @@ import { Subject } from '../../models/subject-model';
 
 import { FormControl, Validators } from '@angular/forms';
 import { BookService } from '../../_services/book.service';
+import { AuthenticationService } from 'src/app/_services/authentication.service';
 
 @Component({
   selector: 'app-subjects',
@@ -20,7 +21,8 @@ export class SubjectsComponent implements OnInit {
   searchOption = new FormControl('name', Validators.required);
 
   constructor(
-    private bookService: BookService
+    private bookService: BookService,
+    private authenticationService: AuthenticationService
   ) { }
 
   ngOnInit() {
@@ -53,14 +55,13 @@ export class SubjectsComponent implements OnInit {
         }
         this.subjectBooksLoad = true;
       });
-
     }
-
   }
   public search(term: string) {
     this.subjects = this.subjectSearch.filter(option =>
       option[this.searchOption.value].toLowerCase().includes(term.toLowerCase())
     );
   }
+
 
 }

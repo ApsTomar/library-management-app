@@ -3,7 +3,7 @@
     flex-direction: column;
     font-size: 28px;
     align-items: center;
-    margin: 0 10px 10px 10px;
+    margin: 0 10px 20px 10px;
     padding-top: 20px;
     font-weight: bold;
     text-decoration: overline;
@@ -64,7 +64,29 @@ mat-card-header{
     font-size: large;
     color: black;
 }
-
+.options{
+    display: flex;
+    margin-bottom: 40px;
+}
+button{
+    display: flex;
+    justify-content: center;
+    background: green;
+    color: gold;
+    width: 155px;
+    padding: 10px;
+    border: 1px solid rgb(211, 125, 26);
+    border-radius: 25px;
+    font-size: small;
+    cursor: pointer;
+    margin-left: 170px;
+    font-size: large;
+    cursor: pointer;
+    padding: 8px;
+    font-family: fantasy;
+    font-weight: bolder;
+    margin-left: 485px;
+}
 @media screen and (max-width: 500px) {
     .flex-container {
         margin: 8px; 
