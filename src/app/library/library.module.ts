@@ -16,6 +16,7 @@ import { CommonModule } from '@angular/common';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AuthorDialogComponent } from './author-dialog/author-dialog.component';
 import { SubjectDialogComponent } from './subject-dialog/subject-dialog.component';
+import { BookDialogComponent } from './book-dialog/book-dialog.component';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { SubjectDialogComponent } from './subject-dialog/subject-dialog.componen
     SubjectsComponent,
     AuthorDialogComponent,
     SubjectDialogComponent,
+    BookDialogComponent,
   ],
   imports: [
     CommonModule,
@@ -50,6 +52,7 @@ import { SubjectDialogComponent } from './subject-dialog/subject-dialog.componen
   entryComponents: [
     AuthorDialogComponent,
     SubjectDialogComponent,
+    BookDialogComponent,
   ],
 })
 export class LibraryModule { }

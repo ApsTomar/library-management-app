@@ -2,7 +2,7 @@ export class Book {
     id: number;
     name: string;
     subject: string;
-    authorId: number;
+    authorId: string;
     authorName: string;
     available: boolean;
     availableDate: Date;

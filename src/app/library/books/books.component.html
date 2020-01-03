@@ -14,7 +14,7 @@
     <input (keyup)="search($event.target.value)" [disabled]="searchOption.status == 'INVALID'">
 
     <div class="addBook" *ngIf="authenticationService.currentUserValue.accountRole == 'admin'">
-        <button class="addButton">add new book</button>
+        <button mat-raised-button (click)="openDialog()">add new book</button>
     </div>
 </div>
 

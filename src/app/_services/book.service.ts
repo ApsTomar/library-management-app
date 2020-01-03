@@ -28,8 +28,8 @@ export class BookService {
     return this.bookList$$.asObservable();
   }
 
-  public addBook(author: Author) {
-    this.http.post(`${this.baseUrl}/admin/add/book`, author);
+  public addBook(book: Book) {
+    return this.http.post(`${this.baseUrl}/admin/add/book`, book);
   }
 
   public getBooks(): Observable<Book[]> {
