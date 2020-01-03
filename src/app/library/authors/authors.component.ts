@@ -7,6 +7,7 @@ import { BookService } from '../../_services/book.service';
 import { AuthenticationService } from 'src/app/_services/authentication.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AuthorDialogComponent } from '../author-dialog/author-dialog.component';
+import { MatSnackBar } from '@angular/material';
 
 
 @Component({
@@ -31,7 +32,8 @@ export class AuthorsComponent implements OnInit {
   constructor(
     private bookService: BookService,
     private authenticationService: AuthenticationService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private snackBar: MatSnackBar
   ) { }
 
   openDialog() {
@@ -43,8 +45,14 @@ export class AuthorsComponent implements OnInit {
       let dob = `${data.dob.getDate()} ${data.dob.toLocaleString('default', { month: 'long' })} ${data.dob.getFullYear()}`;
       this.newAuthor.name = data.name;
       this.newAuthor.dateOfBirth = dob;
-      this.bookService.addAuthor(this.newAuthor);
-      
+      this.bookService.addAuthor(this.newAuthor).subscribe(data => {
+        this.snackBar.open('author added successfully', 'dismiss', {
+          duration: 2000,
+          panelClass: 'success'
+        })
+        this.getAuthors();
+      });
+
     });
   }
 
@@ -65,15 +73,17 @@ export class AuthorsComponent implements OnInit {
       let authorBooks: Book[] = [];
       this.bookService.getBooksByAuthorId(author.id).subscribe(books => {
         authorBooks = books;
-        if (authorBooks.length <= 3) {
-          this.bookMap = {
-            ...this.bookMap,
-            [author.name]: [...authorBooks]
-          }
-        } else {
-          this.bookMap = {
-            ...this.bookMap,
-            [author.name]: [...authorBooks.slice(0, 3)]
+        if (books) {
+          if (authorBooks.length <= 3) {
+            this.bookMap = {
+              ...this.bookMap,
+              [author.name]: [...authorBooks]
+            }
+          } else {
+            this.bookMap = {
+              ...this.bookMap,
+              [author.name]: [...authorBooks.slice(0, 3)]
+            }
           }
         }
         this.authorBooksLoad = true;

@@ -6,6 +6,7 @@ import { Book } from '../models/book-model';
 
 import { Author } from '../models/author-model';
 import { MatSnackBar } from '@angular/material';
+import { SubjectsComponent } from '../library/subjects/subjects.component';
 
 
 @Injectable({
@@ -27,6 +28,10 @@ export class BookService {
     return this.bookList$$.asObservable();
   }
 
+  public addBook(author: Author) {
+    this.http.post(`${this.baseUrl}/admin/add/book`, author);
+  }
+
   public getBooks(): Observable<Book[]> {
     return this.http.get<Book[]>(`${this.baseUrl}/get/books`);
   }
@@ -44,12 +49,7 @@ export class BookService {
   }
 
   public addAuthor(author: Author) {
-    this.http.post(`${this.baseUrl}/admin/add/author`, author).subscribe(data => {
-      this.snackBar.open('author added successfully', 'dismiss', {
-        duration: 2000,
-        panelClass: 'success'
-      })
-    });
+    return this.http.post(`${this.baseUrl}/admin/add/author`, author);
   }
 
   public getAuthors(): Observable<Author[]> {
@@ -58,6 +58,10 @@ export class BookService {
 
   public getBooksByAuthorId(authorId: number): Observable<Book[]> {
     return this.http.get<Book[]>(`${this.baseUrl}/get/books-by-author/${authorId}`);
+  }
+
+  public addSubject(subject: Subject) {
+    return this.http.post(`${this.baseUrl}/admin/add/subject`, subject);
   }
 
   public getSubjects(): Observable<Subject[]> {

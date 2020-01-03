@@ -15,6 +15,7 @@ import { LibraryRoutingModule } from './library-routing.module';
 import { CommonModule } from '@angular/common';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AuthorDialogComponent } from './author-dialog/author-dialog.component';
+import { SubjectDialogComponent } from './subject-dialog/subject-dialog.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { AuthorDialogComponent } from './author-dialog/author-dialog.component';
     AuthorsComponent,
     SubjectsComponent,
     AuthorDialogComponent,
+    SubjectDialogComponent,
   ],
   imports: [
     CommonModule,
@@ -45,6 +47,9 @@ import { AuthorDialogComponent } from './author-dialog/author-dialog.component';
     { provide: HTTP_INTERCEPTORS, useClass: JWTInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],
-  entryComponents: [AuthorDialogComponent],
+  entryComponents: [
+    AuthorDialogComponent,
+    SubjectDialogComponent,
+  ],
 })
 export class LibraryModule { }
